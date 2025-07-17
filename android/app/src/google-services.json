@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748322261992",
+    "project_id": "blood4everyone-d5f5b",
+    "storage_bucket": "blood4everyone-d5f5b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748322261992:android:7b6b32fa59c839774f725d",
+        "android_client_info": {
+          "package_name": "com.example.blood_camp_finder_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhYz1AGmntcg8xMN1ax7b_9qH-HCiroUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
