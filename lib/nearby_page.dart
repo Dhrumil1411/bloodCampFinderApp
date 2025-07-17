@@ -131,13 +131,27 @@ class _NearbyPageState extends State<NearbyPage> {
   }
 
   Future<void> _launchDialer(String phoneNumber) async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+    // Clean the phone number - remove all non-digit characters
+    final cleanedNumber = phoneNumber.replaceAll(RegExp(r'[^0-9+]'), '');
+
+    // Create the phone URI
+    final Uri phoneUri = Uri(scheme: 'tel', path: cleanedNumber);
     print("Dial URI: $phoneUri");
 
-    if (await canLaunchUrl(phoneUri)) {
-      await launchUrl(phoneUri, mode: LaunchMode.externalApplication);
-    } else {
-      print("❌ Could not launch dialer");
+    try {
+      if (await canLaunchUrl(phoneUri)) {
+        await launchUrl(phoneUri);
+      } else {
+        print("❌ Could not launch dialer");
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Could not launch dialer")),
+        );
+      }
+    } catch (e) {
+      print("Error launching dialer: $e");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
     }
   }
 
